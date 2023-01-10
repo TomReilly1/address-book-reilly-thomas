@@ -1,16 +1,35 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>AddressBook</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>AddressBook</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_importmap_tag  %>
-  </head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body>
+  <header>
+    <nav class="navbar bg-primary">
+      <div class="container-fluid d-flex justify-content-space-between">
+        <a class="navbar-brand fs-1 link-light mx-2" href="/">Address Book</a>
+        <% if !!current_user %>
+          <div class="d-flex justify-content-center align-items-center">
+            <span class="fs-3 text-light">
+              <%= current_user.username %>
+            </span>
+            <%= link_to "Logout", logout_path, class: "btn btn-danger text-light fw-bold mx-2" %>
+          </div>
+        <% else %>
+          <%= link_to "Login", login_path, class: "btn btn-info text-light fw-bold mx-2" %>
+        <% end %>
+      </div>
+    </nav>
+  </header>
+  
+  <%= yield %>
+
+</body>
 </html>

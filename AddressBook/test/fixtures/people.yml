@@ -1,19 +1,21 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   salutation: MyString
-  first_name: MyString
+  first_name: one_first
   middle_name: MyString
-  last_name: MyString
-  ssn: 1
+  last_name: one_last
+  ssn: 111223333
   birth_date: 2022-12-30
   comment: MyText
 
 two:
+  id: 2
   salutation: MyString
-  first_name: MyString
+  first_name: two_first
   middle_name: MyString
-  last_name: MyString
-  ssn: 1
+  last_name: two_last
+  ssn: 444556666
   birth_date: 2022-12-30
   comment: MyText

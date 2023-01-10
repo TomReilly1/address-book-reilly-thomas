@@ -3,7 +3,7 @@
 one:
   street: MyString
   town: MyString
-  zip: 1
+  zip: 11111
   state: MyString
   country: MyString
   person: one
@@ -11,7 +11,7 @@ one:
 two:
   street: MyString
   town: MyString
-  zip: 1
+  zip: 22222
   state: MyString
   country: MyString
   person: two

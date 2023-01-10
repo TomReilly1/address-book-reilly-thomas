@@ -1,0 +1,49 @@
+<%= form_with model: person do |form| %>
+  <div>
+    <%= form.label :salutation %><br>
+    <%= form.text_field :salutation %>
+  </div>
+
+  <div>
+    <%= form.label :first_name %>
+    <br>
+    <%= form.text_field :first_name %>
+
+    <% person.errors.full_messages_for(:first_name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :middle_name %><br>
+    <%= form.text_field :middle_name %>
+  </div>
+
+  <div>
+    <%= form.label :last_name %><br>
+    <%= form.text_field :last_name %>
+
+    <% person.errors.full_messages_for(:last_name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :ssn %><br>
+    <%= form.number_field :ssn %>
+  </div>
+
+  <div>
+    <%= form.label :birth_date %><br>
+    <%= form.date_field :birth_date %>
+  </div>
+
+  <div>
+    <%= form.label :comment %><br>
+    <%= form.text_area :comment %>
+  </div>
+
+  <div class="d-flex justify-content-center mt-4">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,2 +1,39 @@
-<h1>People#index</h1>
-<p>Find me in app/views/people/index.html.erb</p>
+<div class="d-flex justify-content-center my-4">
+    <a href="<%= new_person_path %>" class="btn btn-lg btn-success text-light fw-bold mx-2" role="button">+ Add person</a>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>SALUTATION</th>
+                <th>FIRST NAME</th>
+                <th>MIDDLE NAME</th>
+                <th>LAST NAME</th>
+                <th>SSN</th>
+                <th>BIRTH DATE</th>
+                <th>COMMENT</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @people.each do |person| %>
+                <tr>
+                    <td><%= link_to person.id, person %></td>
+                    <td><%= person.salutation %></td>
+                    <td><%= person.first_name %></td>
+                    <td><%= person.middle_name %></td>
+                    <td><%= person.last_name %></td>
+                    <td><%= person.ssn %></td>
+                    <td><%= person.birth_date %></td>
+                    <td><%= person.comment %></td>
+                    <td class="d-flex justify-content-center align-items-center flex-wrap">
+                        <%= link_to "Edit", edit_person_path(person), class: "btn btn-sm btn-warning text-light fw-bold mx-2 my-1" %>
+                        <%= link_to "Delete", person_path(person), data: {method: :delete, confirm: "Are you sure?"}, class: "btn btn-sm btn-danger text-light fw-bold mx-2 my-1" %>
+                    </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>

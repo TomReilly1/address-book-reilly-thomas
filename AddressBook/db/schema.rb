@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_30_191109) do
+ActiveRecord::Schema.define(version: 2023_01_03_164743) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "addresses", force: :cascade do |t|
     t.string "street", null: false
@@ -18,7 +21,7 @@ ActiveRecord::Schema.define(version: 2022_12_30_191109) do
     t.integer "zip", null: false
     t.string "state"
     t.string "country", null: false
-    t.integer "person_id", null: false
+    t.bigint "person_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["person_id"], name: "index_addresses_on_person_id"
@@ -27,7 +30,7 @@ ActiveRecord::Schema.define(version: 2022_12_30_191109) do
   create_table "emails", force: :cascade do |t|
     t.string "email_address", null: false
     t.text "comment"
-    t.integer "person_id", null: false
+    t.bigint "person_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["person_id"], name: "index_emails_on_person_id"
@@ -48,7 +51,7 @@ ActiveRecord::Schema.define(version: 2022_12_30_191109) do
   create_table "phone_numbers", force: :cascade do |t|
     t.integer "phone_number", null: false
     t.text "comment"
-    t.integer "person_id", null: false
+    t.bigint "person_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["person_id"], name: "index_phone_numbers_on_person_id"

@@ -1,4 +1,5 @@
 class PeopleController < ApplicationController
+  before_action :ensure_current_user
 
   def index
     @people = Person.all

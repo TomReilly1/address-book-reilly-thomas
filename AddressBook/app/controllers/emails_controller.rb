@@ -1,4 +1,5 @@
 class EmailsController < ApplicationController
+  before_action :ensure_current_user
   before_action :get_person
   before_action :set_email, only: [:show, :edit, :update, :destroy]
 

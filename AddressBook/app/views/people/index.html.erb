@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-center my-4">
-    <a href="<%= new_person_path %>" class="btn btn-lg btn-success text-light fw-bold mx-2" role="button">+ Add person</a>
+    <%= link_to "+ Add person", new_person_path, class: "btn btn-lg btn-success text-light fw-bold mx-2" %>
 </div>
 
 <div class="table-responsive">
@@ -29,7 +29,7 @@
                     <td><%= person.birth_date %></td>
                     <td><%= person.comment %></td>
                     <td class="d-flex justify-content-center align-items-center flex-wrap">
-                        <%= link_to "Edit", edit_person_path(person), class: "btn btn-sm btn-warning text-light fw-bold mx-2 my-1" %>
+                        <%= link_to "Edit", edit_person_path(person), class: "btn btn-sm btn-warning text-dark fw-bold mx-2 my-1" %>
                         <%= link_to "Delete", person_path(person), data: {method: :delete, confirm: "Are you sure?"}, class: "btn btn-sm btn-danger text-light fw-bold mx-2 my-1" %>
                     </td>
                 </tr>

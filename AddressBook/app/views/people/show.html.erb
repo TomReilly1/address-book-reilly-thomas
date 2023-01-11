@@ -6,8 +6,8 @@
             </h2>
         </div>
         <div class="d-flex justify-content-center mb-4">
+            <%= link_to "Edit", edit_person_path(@person), class: "btn btn-warning text-dark fw-bold mx-2" %>
             <%= link_to "Delete", person_path(@person), data: {method: :delete, confirm: "Are you sure?"}, class: "btn btn-danger text-light fw-bold mx-2" %>
-            <%= link_to "Edit", edit_person_path(@person), class: "btn btn-warning text-light fw-bold mx-2" %>
         </div>
         <div class="d-flex justify-content-center table-responsive-sm ">
             <table class="table table-sm table-bordered mw-100 w-50 bg-light">
@@ -49,10 +49,10 @@
 
     <hr>
     
-    <div id="address-info" class="my-2">
+    <div id="address-info" class="my-4">
         <div class="d-flex py-2 border-bottom">
             <h3>Addresses</h3>
-            <a href="<%= new_person_address_path(@person) %>" class="btn btn-success text-light fw-bold mx-2" role="button">+ Add address</a>
+            <%= link_to "+ Add address", new_person_address_path(@person), class: "btn btn-success text-light fw-bold mx-2" %>
         </div>
         <div class="table-responsive bg-light">
             <table class="table table-sm">
@@ -76,9 +76,9 @@
                             <td><%= address.state %></td>
                             <td><%= address.zip %></td>
                             <td><%= address.country %></td>
-                            <td class="d-flex justify-content-end align-items-center">
-                                <a href="<%= edit_person_address_path(@person, address.id) %>" class="btn btn-sm btn-warning text-dark fw-bold mx-2" role="button">Edit</a>
-                                <a href="<%= person_address_path(@person, address.id) %>" class="btn btn-sm btn-danger text-light fw-bold mx-2" role="button">Delete</a>
+                            <td class="d-flex justify-content-center align-items-center flex-wrap">                         
+                                <%= link_to "Edit", edit_person_address_path(@person, address.id), class: "btn btn-sm btn-warning text-dark fw-bold m-1" %>
+                                <%= link_to "Delete", person_address_path(@person, address.id), data: {method: :delete, confirm: "Are you sure?"}, class: "btn btn-sm btn-danger text-light fw-bold m-1" %>
                             </td>
                         </tr>
                     <% end %>
@@ -87,10 +87,10 @@
         </div>
     </div>
 
-    <div id="email-info" class="my-2">
+    <div id="email-info" class="my-4">
         <div class="d-flex py-3 border-bottom">
             <h3>Email</h3>
-            <a href="<%= new_person_email_path(@person) %>" class="btn btn-success text-light fw-bold mx-2" role="button">+ Add email</a>
+            <%= link_to "+ Add email", new_person_email_path(@person), class: "btn btn-success text-light fw-bold mx-2" %>
         </div>
         <div class="table-responsive bg-light ">
             <table class="table table-sm">
@@ -108,9 +108,9 @@
                             <td><%= email.id %></td>
                             <td><%= email.email_address %></td>
                             <td><%= email.comment %></td>
-                            <td class="d-flex justify-content-end align-items-center">
-                                <a href="<%= edit_person_email_path(@person, email.id) %>" class="btn btn-sm btn-warning text-dark fw-bold mx-2" role="button">Edit</a>
-                                <a href="<%= person_email_path(@person, email.id) %>" class="btn btn-sm btn-danger text-light fw-bold mx-2" role="button">Delete</a>
+                            <td class="d-flex justify-content-center align-items-center flex-wrap">                         
+                                <%= link_to "Edit", edit_person_email_path(@person, email.id), class: "btn btn-sm btn-warning text-dark fw-bold m-1" %>
+                                <%= link_to "Delete", person_email_path(@person, email.id), data: {method: :delete, confirm: "Are you sure?"}, class: "btn btn-sm btn-danger text-light fw-bold m-1" %>
                             </td>
                         </tr>
                     <% end %>
@@ -118,10 +118,10 @@
             </table>
         </div>
     </div>
-    <div id="phone-number-info" class="my-2">
+    <div id="phone-number-info" class="my-4">
         <div class="d-flex py-2 border-bottom">
             <h3>Phone Number</h3>
-            <a href="<%= new_person_phone_number_path(@person) %>" class="btn btn-success text-light fw-bold mx-2" role="button">+ Add phone number</a>
+            <%= link_to "+ Add phone number", new_person_phone_number_path(@person), class: "btn btn-success text-light fw-bold mx-2" %>
         </div>
         <div class="table-responsive bg-light">
             <table class="table table-sm">
@@ -139,9 +139,9 @@
                             <td><%= phone_number.id %></td>
                             <td><%= phone_number.phone_number %></td>
                             <td><%= phone_number.comment %></td>
-                            <td class="d-flex justify-content-end align-items-center">
-                                <a href="<%= edit_person_phone_number_path(@person, phone_number.id) %>" class="btn btn-sm btn-warning text-dark fw-bold mx-2" role="button">Edit</a>
-                                <a href="<%= person_phone_number_path(@person, phone_number.id) %>" class="btn btn-sm btn-danger text-light fw-bold mx-2" role="button">Delete</a>
+                            <td class="d-flex justify-content-center align-items-center flex-wrap">                         
+                                <%= link_to "Edit", edit_person_phone_number_path(@person, phone_number.id), class: "btn btn-sm btn-warning text-dark fw-bold m-1" %>
+                                <%= link_to "Delete", person_phone_number_path(@person, phone_number.id), data: {method: :delete, confirm: "Are you sure?"}, class: "btn btn-sm btn-danger text-light fw-bold m-1" %>
                             </td>
                         </tr>
                     <% end %>

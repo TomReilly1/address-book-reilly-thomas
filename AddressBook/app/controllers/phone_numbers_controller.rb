@@ -21,10 +21,22 @@ class PhoneNumbersController < ApplicationController
     end
   end
 
+  def edit
+    @phone_number = PhoneNumber.find(params[:id])
+  end
+
+  def update
+    if @phone_number.update(phone_number_params)
+      redirect_to person_path(@person)
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   def destroy
     @phone_number.destroy
 
-    redirect_to root_path, status: :see_other
+    redirect_to person_path(@person), status: :see_other
   end
 
     

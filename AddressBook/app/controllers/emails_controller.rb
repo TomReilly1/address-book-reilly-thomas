@@ -21,10 +21,22 @@ class EmailsController < ApplicationController
     end
   end
 
+  def edit
+    @email = Email.find(params[:id])
+  end
+
+  def update
+    if @email.update(email_params)
+      redirect_to person_path(@person)
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   def destroy
     @email.destroy
 
-    redirect_to root_path, status: :see_other
+    redirect_to person_path(@person), status: :see_other
   end
 
   

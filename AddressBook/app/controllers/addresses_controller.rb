@@ -1,3 +1,5 @@
+require 'json'
+
 class AddressesController < ApplicationController
   before_action :ensure_current_user
   before_action :get_person
@@ -9,6 +11,9 @@ class AddressesController < ApplicationController
 
   def new
     @address = @person.addresses.build
+    
+    file = File.read('./app/assets/json/countries.json')
+    @countries = JSON.parse(file)
   end
   
   def create
@@ -22,6 +27,10 @@ class AddressesController < ApplicationController
   end
 
   def edit
+    @address = Address.find(params[:id])
+    
+    file = File.read('./app/assets/json/countries.json')
+    @countries = JSON.parse(file)
   end
 
   def update

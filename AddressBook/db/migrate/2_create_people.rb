@@ -8,6 +8,7 @@ class CreatePeople < ActiveRecord::Migration[6.1]
       t.integer :ssn
       t.date :birth_date
       t.text :comment
+      t.references :user, null: false, foreign_key: true
 
       t.timestamps
     end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_03_164743) do
+ActiveRecord::Schema.define(version: 5) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,8 +44,10 @@ ActiveRecord::Schema.define(version: 2023_01_03_164743) do
     t.integer "ssn"
     t.date "birth_date"
     t.text "comment"
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_people_on_user_id"
   end
 
   create_table "phone_numbers", force: :cascade do |t|
@@ -66,5 +68,6 @@ ActiveRecord::Schema.define(version: 2023_01_03_164743) do
 
   add_foreign_key "addresses", "people"
   add_foreign_key "emails", "people"
+  add_foreign_key "people", "users"
   add_foreign_key "phone_numbers", "people"
 end

@@ -1,68 +1,42 @@
 class PeopleController < ApplicationController
   before_action :ensure_current_user
+  before_action :get_user
+  before_action :set_person, only: [:show, :edit, :update, :destroy]
 
   def index
-    @people = Person.all
-
-    respond_to do |format|
-      format.json { render json: @people }
-      format.html {}
-    end
+    @people = Person.where(user_id: session[:user_id])
   end
 
   def show
-    @person = Person.find(params[:id])
-    
-    respond_to do |format|
-      format.json { render json: @person }
-      format.html {}
-    end
   end
 
   def new
-    @person = Person.new
-
-    respond_to do |format|
-      format.json { render json: @person }
-      format.html {}
-    end
+    @person = @user.people.new
   end
 
   def create
-    @person = Person.new(person_params)
+    @person = @user.people.new(person_params)
 
-    respond_to do |format|
-      if @person.save
-        format.json { render json: @person, status: :created }
-        format.html { redirect_to @person, notice: 'Post was successfully created.' }
-      else
-        format.json { render json: @person.errors, status: :unprocessable_entity }
-        format.html { render :new }
-      end
+    if @person.save
+      redirect_to @person, notice: 'Post was successfully created.'
+    else
+      render :new
     end
 
   end
 
   def edit
-    @person = Person.find(params[:id])
   end
 
   def update
-    @person = Person.find(params[:id])
-
-    respond_to do |format|
-      if @person.update(person_params)
-        format.json { render json: @person }
-        format.html { redirect_to people_url }
-      else
-        format.json { render json: @person.errors, status: :unprocessable_entity }
-        format.html { render :edit, status: :unprocessable_entity }
-      end
+    if @person.update(person_params)
+      redirect_to people_url
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
-    @person = Person.find(params[:id])
     @person.destroy
 
     redirect_to root_path, status: :see_other
@@ -70,6 +44,14 @@ class PeopleController < ApplicationController
 
 
   private
+  def get_user
+    @user = User.find(session[:user_id])
+  end
+
+  def set_person
+    @person = Person.find(params[:id])
+  end
+
   def person_params
     params.require(:person).permit(
       :salutation,
@@ -78,7 +60,8 @@ class PeopleController < ApplicationController
       :last_name,
       :ssn,
       :birth_date,
-      :comment
+      :comment,
+      :user_id
     )
   end
 
